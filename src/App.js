@@ -1,16 +1,14 @@
 import { Provider } from "react-redux";
-import GlobalStyle from "./components/GlobalStyle";
-
 import { store } from "./redux/store/store";
-import Nav from "./components/Nav";
-import HomePage from "./page/Home";
+
+import GlobalStyle from "./components/GlobalStyle";
+import AppRouter from "./routes";
 
 const App = () => {
   return (
     <Provider store={store}>
       <GlobalStyle />
-      <Nav />
-      <HomePage />
+      <AppRouter />
     </Provider>
   );
 };

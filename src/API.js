@@ -15,3 +15,13 @@ export const obtenerImagenPorID = (url) => {
     url
   )}.png`;
 };
+
+export const obtenerImagenAltPorID = (url) => {
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${obtenerID(
+    url
+  )}.png`;
+};
+
+export const obtenerTotalPokemones = () => {
+  return "https://pokeapi.co/api/v2/pokemon?limit=1118";
+};
