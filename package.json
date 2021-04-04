@@ -2,7 +2,7 @@
   "name": "poke-web",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://brian-aguilar.github.io/pokeweb/",
+  "homepage": "https://brian-aguilar.github.io/poke-web/",
   "dependencies": {
     "@testing-library/jest-dom": "5.11.10",
     "@testing-library/react": "11.2.5",
