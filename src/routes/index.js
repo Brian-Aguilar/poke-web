@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import Nav from "../components/Nav";
@@ -15,8 +15,13 @@ const AppRouter = () => {
     dispatch(getTotalNamePokemons());
   }, [dispatch]);
 
+  /**
+   * <BrowserRouter></BrowserRouter>
+   *  Cuando la app este corriendo de raiz
+   */
+
   return (
-    <Router>
+    <HashRouter>
       <Nav />
       <Switch>
         <Route exact path={["/pokemon/:id", "/"]}>
@@ -27,7 +32,7 @@ const AppRouter = () => {
         </Route>
         <Route component={NotFoundPage} />
       </Switch>
-    </Router>
+    </HashRouter>
   );
 };
 export default AppRouter;
