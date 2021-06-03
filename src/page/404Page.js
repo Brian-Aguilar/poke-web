@@ -201,16 +201,15 @@ const notFoundAnimation = {
 
 const NotFoundStyle = styled(motion.div)`
   background-color: #135063;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
+  /* position: fixed; */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 901;
+  padding: 2em;
 
   svg {
     max-width: 90vw;
@@ -274,6 +273,7 @@ const ButtonBack = styled(motion.button)`
   font-size: 1.5rem;
   border-radius: 1em;
   box-shadow: 0 5px 30px rgba(var(--yellow), 0.5);
+  cursor: pointer;
 `;
 
 export default NotFoundPage;

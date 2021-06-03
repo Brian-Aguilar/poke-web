@@ -1,20 +1,15 @@
 import { HashRouter, Route, Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
-import Nav from "../components/Nav";
 import HomePage from "../page/Home";
-import { useEffect } from "react";
-import { getTotalNamePokemons } from "../redux/actions/pokemonsAction";
-import SearchPokemon from "../page/SearchPokemon";
+import PokedexPage from "../page/PokedexPage";
+import ItemsPage from "../page/ItemsPage";
 import NotFoundPage from "../page/404Page";
 
+import pokeballFondo from "../images/pokeball_fondo.svg";
+import { PokemonProvider } from "../context/pokemonContext";
+import ProximaPagina from "../page/page";
+
 const AppRouter = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getTotalNamePokemons());
-  }, [dispatch]);
-
   /**
    * <BrowserRouter></BrowserRouter>
    *  Cuando la app este corriendo de raiz
@@ -22,16 +17,32 @@ const AppRouter = () => {
 
   return (
     <HashRouter>
-      <Nav />
-      <Switch>
-        <Route exact path={["/pokemon/:id", "/"]}>
-          <HomePage />
-        </Route>
-        <Route exact path="/search/:pokemon">
-          <SearchPokemon />
-        </Route>
-        <Route component={NotFoundPage} />
-      </Switch>
+      <main className="main shadow">
+        <img src={pokeballFondo} alt="pokeball-fondo" />
+        <Switch>
+          <Route
+            exact
+            path={["/pokedex", "/pokedex/pokemon/:id", "/pokedex/search/:name"]}
+          >
+            <PokemonProvider>
+              <PokedexPage />
+            </PokemonProvider>
+          </Route>
+          <Route exact path={["/items", "/items/search/:item"]}>
+            <ItemsPage />
+          </Route>
+          <Route exact path="/types">
+            <ProximaPagina />
+          </Route>
+          <Route exact path="/ability">
+            <ProximaPagina />
+          </Route>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route component={NotFoundPage} />
+        </Switch>
+      </main>
     </HashRouter>
   );
 };

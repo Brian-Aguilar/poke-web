@@ -1,57 +1,56 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getPokemons } from "../redux/actions/pokemonsAction";
-
-import CardList from "../components/CardList";
-import DetailPokemonPage from "./DetailPokemon";
-import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { PageStyle } from "../components/GlobalStyle";
-import LoadingPage from "./LoadingPage";
+
+import { Row } from "../components/GlobalStyle";
+import CardSimple from "../components/Card/simple";
 
 const HomePage = () => {
-  const location = useLocation();
-  const pathID = location.pathname.replace("/pokemon/", "");
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPokemons());
-  }, [dispatch]);
-
-  const { data, isLoading, next } = useSelector((state) => state.pokemons);
-
-  const getMorePokemons = () => {
-    dispatch(getPokemons(next));
-  };
-
   return (
     <>
-      <LoadingPage isLoading={isLoading} />
-      <PageStyle>
-        <h1>Pokedex</h1>
-
-        <CardList data={data} />
-
-        <DetailPokemonPage path={pathID} />
-
-        <ButtonStyle onClick={getMorePokemons}>
-          Cargar más pokemones
-        </ButtonStyle>
-      </PageStyle>
+      <HomeStyle>
+        <h1>Inicio</h1>
+        <Link to="/pokedex">
+          <CardSimple titulo="pokédex" />
+        </Link>
+        <Row className="row">
+          <Link to="/items">
+            <CardSimple titulo="items" />
+          </Link>
+          <Link to="/types">
+            <CardSimple titulo="types" />
+          </Link>
+        </Row>
+        <Row className="row">
+          <Link to="/ability">
+            <CardSimple titulo="abilities" />
+          </Link>
+        </Row>
+      </HomeStyle>
     </>
   );
 };
 
-const ButtonStyle = styled.button`
-  background-color: rgb(var(--red));
-  display: block;
-  font-size: 1.3rem;
-  padding: 1em;
-  color: white;
-  border-radius: 1em;
-  border: 0;
-  margin: 3em auto 0.5em;
-  outline: none;
-  cursor: pointer;
+const HomeStyle = styled.div`
+  padding: 1.25em;
+  position: relative;
+  height: 100%;
+
+  h1 {
+    font-size: 2.25rem;
+    margin: 1em 0;
+
+    @media screen and (min-width: 375px) {
+      font-size: 3rem;
+    }
+  }
+
+  .row {
+    margin-top: 20px;
+    gap: 20px;
+
+    a {
+      flex: 1;
+    }
+  }
 `;
 export default HomePage;
