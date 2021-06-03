@@ -1,19 +1,39 @@
 {
   "files": {
-    "main.js": "/poke-web/static/js/main.a4f751af.chunk.js",
-    "main.js.map": "/poke-web/static/js/main.a4f751af.chunk.js.map",
-    "runtime-main.js": "/poke-web/static/js/runtime-main.b9b83529.js",
-    "runtime-main.js.map": "/poke-web/static/js/runtime-main.b9b83529.js.map",
-    "static/js/2.b8d18a06.chunk.js": "/poke-web/static/js/2.b8d18a06.chunk.js",
-    "static/js/2.b8d18a06.chunk.js.map": "/poke-web/static/js/2.b8d18a06.chunk.js.map",
-    "static/js/3.129e886e.chunk.js": "/poke-web/static/js/3.129e886e.chunk.js",
-    "static/js/3.129e886e.chunk.js.map": "/poke-web/static/js/3.129e886e.chunk.js.map",
+    "main.js": "/poke-web/static/js/main.6854fb3c.chunk.js",
+    "main.js.map": "/poke-web/static/js/main.6854fb3c.chunk.js.map",
+    "runtime-main.js": "/poke-web/static/js/runtime-main.06c513a1.js",
+    "runtime-main.js.map": "/poke-web/static/js/runtime-main.06c513a1.js.map",
+    "static/js/2.09629a6f.chunk.js": "/poke-web/static/js/2.09629a6f.chunk.js",
+    "static/js/2.09629a6f.chunk.js.map": "/poke-web/static/js/2.09629a6f.chunk.js.map",
+    "static/js/3.5aeaf45f.chunk.js": "/poke-web/static/js/3.5aeaf45f.chunk.js",
+    "static/js/3.5aeaf45f.chunk.js.map": "/poke-web/static/js/3.5aeaf45f.chunk.js.map",
     "index.html": "/poke-web/index.html",
-    "static/js/2.b8d18a06.chunk.js.LICENSE.txt": "/poke-web/static/js/2.b8d18a06.chunk.js.LICENSE.txt"
+    "static/js/2.09629a6f.chunk.js.LICENSE.txt": "/poke-web/static/js/2.09629a6f.chunk.js.LICENSE.txt",
+    "static/media/bug.b925af52.svg": "/poke-web/static/media/bug.b925af52.svg",
+    "static/media/dark.de019286.svg": "/poke-web/static/media/dark.de019286.svg",
+    "static/media/dragon.f7b73d64.svg": "/poke-web/static/media/dragon.f7b73d64.svg",
+    "static/media/electric.ca145ced.svg": "/poke-web/static/media/electric.ca145ced.svg",
+    "static/media/fairy.84c9eab8.svg": "/poke-web/static/media/fairy.84c9eab8.svg",
+    "static/media/figthing.06c0b876.svg": "/poke-web/static/media/figthing.06c0b876.svg",
+    "static/media/fire.6f780d28.svg": "/poke-web/static/media/fire.6f780d28.svg",
+    "static/media/flying.a5749e48.svg": "/poke-web/static/media/flying.a5749e48.svg",
+    "static/media/ghost.1bb6ae36.svg": "/poke-web/static/media/ghost.1bb6ae36.svg",
+    "static/media/grass.3552dab1.svg": "/poke-web/static/media/grass.3552dab1.svg",
+    "static/media/ground.846f736f.svg": "/poke-web/static/media/ground.846f736f.svg",
+    "static/media/ice.67fc7e33.svg": "/poke-web/static/media/ice.67fc7e33.svg",
+    "static/media/normal.6ebb8542.svg": "/poke-web/static/media/normal.6ebb8542.svg",
+    "static/media/pokeball_fondo.f1808df5.svg": "/poke-web/static/media/pokeball_fondo.f1808df5.svg",
+    "static/media/pokemon_coin.e7ebdbe1.svg": "/poke-web/static/media/pokemon_coin.e7ebdbe1.svg",
+    "static/media/posion.c1cf3e30.svg": "/poke-web/static/media/posion.c1cf3e30.svg",
+    "static/media/psychic.d0f2ad42.svg": "/poke-web/static/media/psychic.d0f2ad42.svg",
+    "static/media/rock.3b5426d3.svg": "/poke-web/static/media/rock.3b5426d3.svg",
+    "static/media/steel.4ce970dc.svg": "/poke-web/static/media/steel.4ce970dc.svg",
+    "static/media/water.863be4c7.svg": "/poke-web/static/media/water.863be4c7.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b9b83529.js",
-    "static/js/2.b8d18a06.chunk.js",
-    "static/js/main.a4f751af.chunk.js"
+    "static/js/runtime-main.06c513a1.js",
+    "static/js/2.09629a6f.chunk.js",
+    "static/js/main.6854fb3c.chunk.js"
   ]
 }
