@@ -1,3 +1,14 @@
+export const imageByPokemon = (id) => {
+  if (id < 899) {
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+  }
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+};
+
+export const imageByItem = (name) => {
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${name}.png`;
+};
+
 export const nameStat = (name) => {
   const nameArray = name.split("-");
   if (nameArray.length === 1) {
