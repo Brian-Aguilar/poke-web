@@ -1,17 +1,9 @@
-import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
 import styled from "styled-components";
-import LoadPokeball from "../svg/load";
 
 const LoadImage = ({ srcURL }) => {
-  const [load, setLoad] = useState(false);
   return (
     <LoadImageStyle>
-      <AnimatePresence exitBeforeEnter="">
-        {load === false && <LoadPokeball />}
-      </AnimatePresence>
-
-      <img src={srcURL} alt={srcURL} onLoadCapture={() => setLoad(true)} />
+      <img src={srcURL} alt={srcURL} />
     </LoadImageStyle>
   );
 };

@@ -7,11 +7,7 @@ const NavbarDP = ({ id, name, resetData }) => {
   const history = useHistory();
   const goBack = () => {
     resetData();
-    if (history.length > 2) {
-      history.goBack();
-    } else {
-      history.push("/pokedex");
-    }
+    history.goBack();
   };
 
   return (

@@ -1,11 +1,9 @@
 import { BasePageStyle } from "../components/GlobalStyle";
-import NavbarPokedex from "../components/Navbar/pokedex";
 
 const ProximaPagina = () => {
   return (
     <BasePageStyle>
-      <NavbarPokedex />
-      <h1>Proximamente</h1>
+      <h1>Coming soon</h1>
     </BasePageStyle>
   );
 };

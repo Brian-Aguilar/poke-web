@@ -7,8 +7,9 @@ const SearchInput = ({ base }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push(`/${base}/search/${e.target.children.search.value}`);
-    e.target.children.search.value = "";
+    const search = e.target.children.search.value.replaceAll(" ", "-");
+    history.push(`/${base}/search/${search}`);
+    e.target.reset();
   };
 
   return (

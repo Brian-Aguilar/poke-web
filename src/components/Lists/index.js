@@ -1,29 +1,29 @@
-import { memo, useCallback } from "react";
+import { memo } from "react";
 import styled from "styled-components";
 import CardItem from "../Card/items";
 import CardPokemon from "../Card/pokemon";
 import LoadPokeball from "../svg/load";
 
-const ListBase = ({ data, getData, type }) => {
-  const loadMore = useCallback(() => {
-    getData(data.next);
-  }, [getData, data.next]);
+const ListBase = ({ data, dispatch, type, isLoading }) => {
+  const loadMore = () => {
+    dispatch();
+  };
 
   return (
     <>
       <ListBaseStyle>
         {type === "pokemon" &&
-          data.datos.map((dato) => (
+          data.data.map((dato) => (
             <CardPokemon key={`${dato.name}-${dato.id}`} dato={dato} />
           ))}
 
         {type === "item" &&
-          data.datos.map((dato) => (
+          data.data.map((dato) => (
             <CardItem key={`${dato.name}-${dato.id}`} dato={dato} />
           ))}
       </ListBaseStyle>
 
-      {data.isLoading ? (
+      {isLoading ? (
         <LoadingController>
           <LoadPokeball />
         </LoadingController>

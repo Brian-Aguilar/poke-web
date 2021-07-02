@@ -1,44 +1,37 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { Row } from "../components/GlobalStyle";
+import { BasePageStyle, Row } from "../components/GlobalStyle";
 import CardSimple from "../components/Card/simple";
 
 const HomePage = () => {
   return (
-    <>
-      <HomeStyle>
-        <h1>Inicio</h1>
-        <Link to="/pokedex">
-          <CardSimple titulo="pokédex" />
+    <HomeStyle>
+      <h1>Home</h1>
+      <Link to="/pokedex">
+        <CardSimple titulo="pokédex" />
+      </Link>
+      <Row className="row">
+        <Link to="/items">
+          <CardSimple titulo="items" />
         </Link>
-        <Row className="row">
-          <Link to="/items">
-            <CardSimple titulo="items" />
-          </Link>
-          <Link to="/types">
-            <CardSimple titulo="types" />
-          </Link>
-        </Row>
-        <Row className="row">
-          <Link to="/ability">
-            <CardSimple titulo="abilities" />
-          </Link>
-        </Row>
-      </HomeStyle>
-    </>
+        <Link to="/types">
+          <CardSimple titulo="types" />
+        </Link>
+      </Row>
+      <Row className="row">
+        <Link to="/ability">
+          <CardSimple titulo="abilities" />
+        </Link>
+      </Row>
+    </HomeStyle>
   );
 };
 
-const HomeStyle = styled.div`
-  padding: 1.25em;
-  position: relative;
+const HomeStyle = styled(BasePageStyle)`
   height: 100%;
 
   h1 {
-    font-size: 2.25rem;
-    margin: 1em 0;
-
     @media screen and (min-width: 375px) {
       font-size: 3rem;
     }

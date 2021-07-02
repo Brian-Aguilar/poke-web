@@ -1,30 +1,45 @@
+import { useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+
+import { usePokemon } from "../R";
+import apiGraphQL from "../API";
+import { imageByPokemon } from "../utils/pokemons";
+
 import NavbarDP from "../components/Navbar/detailPokemon";
 import ListCardInfo from "../components/Lists/info";
 import Badge from "../components/Badge";
 
-import PokeballFondo from "../images/pokeball_fondo.svg";
-import { useContext, useEffect } from "react";
-import { PokemonContext } from "../context/pokemonContext";
-
-const getImageById = (id) => {
-  if (id < 899) {
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
-  }
-  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-};
+import LoadPokeball from "../components/svg/load";
+import PokeballFondo from "../components/svg/pokeball_gris";
 
 const DetailPokemonPage = ({ id }) => {
-  const { pokemon, getPokemon, resetPokemon } = useContext(PokemonContext);
-  const color =
-    pokemon.datos.pokemon_v2_pokemonspecy?.pokemon_v2_pokemoncolor.name ||
-    "none";
+  const {
+    pokemonState: { pokemon, pokemons, isLoading },
+    pokemonDispatch,
+  } = usePokemon();
 
   useEffect(() => {
-    getPokemon(id);
-  }, [getPokemon, id]);
-  useEffect(() => {}, [pokemon]);
+    pokemonDispatch({ type: "POKEMONS_LOADING" });
+    axios(apiGraphQL(id, "GET_POKEMON")).then((res) => {
+      const {
+        status,
+        data: { data },
+      } = res;
+
+      if (status === 200) {
+        pokemonDispatch({
+          type: "POKEMON",
+          payload: data.pokemon_v2_pokemon[0],
+        });
+      }
+    });
+    // eslint-disable-next-line
+  }, [id]);
+  const color =
+    pokemon?.pokemon_v2_pokemonspecy.pokemon_v2_pokemoncolor.name || "none";
+
   return (
     <DetailPokemonBack
       initial={{ opacity: 0 }}
@@ -32,40 +47,41 @@ const DetailPokemonPage = ({ id }) => {
       exit={{ opacity: 0, transition: { duration: 0.15 } }}
       transition={{ duration: 0.2, delay: 0.15 }}
     >
-      <DetailPokemonStyle
-        layoutId={`pokemon-detail-${id}`}
-        className={`${color}`}
-      >
-        {pokemon.datos.name !== "" && (
-          <>
+      <DetailPokemoContent layoutId={`pokemon-detail-${id}`}>
+        {isLoading && (
+          <LoadingController>
+            <LoadPokeball />
+          </LoadingController>
+        )}
+
+        {pokemon !== null && pokemons.next !== 1 && isLoading === false && (
+          <DetailPokemonStyle className={`${color}`}>
             <NavbarDP
               id={id}
-              name={pokemon.datos.name}
-              resetData={resetPokemon}
+              name={pokemon.name}
+              resetData={() => pokemonDispatch({ type: "POKEMON_CLEAR" })}
             />
             <DPContent>
               <motion.img
-                src={getImageById(id)}
-                alt={`pokemon-img-${pokemon.datos.name}`}
+                src={imageByPokemon(id)}
+                alt={`pokemon-img-${pokemon.name}`}
                 layoutId={`pokemon-img-${id}`}
                 className="pokemon-image"
               />
               <div>
-                {pokemon.datos?.pokemon_v2_pokemontypes?.map((d, i) => (
+                {pokemon?.pokemon_v2_pokemontypes?.map((d, i) => (
                   <Badge key={`type-${i}`} nombre={d.pokemon_v2_type.name} />
                 ))}
               </div>
-              <img
-                className="pokeball-fondo"
-                src={PokeballFondo}
-                alt="pokeball-fondo-dpp"
-              />{" "}
+              <span className="pokeball-fondo">
+                <PokeballFondo />
+              </span>
             </DPContent>
 
-            <ListCardInfo datos={pokemon.datos} color={color} />
-          </>
+            <ListCardInfo datos={pokemon} color={color} />
+          </DetailPokemonStyle>
         )}
-      </DetailPokemonStyle>
+      </DetailPokemoContent>
     </DetailPokemonBack>
   );
 };
@@ -82,14 +98,24 @@ const DetailPokemonBack = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const DetailPokemoContent = styled(motion.div)`
+  background: var(--g-white), white;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  @media screen and (min-width: 375px) {
+    border-radius: 1.25em;
+    max-width: 414px;
+    max-height: 812px;
+    min-height: 812px;
+  }
+`;
 
 const DetailPokemonStyle = styled(motion.div)`
-  background: var(--g-white), white;
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
 
   &.green {
     background: var(--g-green), white;
@@ -115,13 +141,6 @@ const DetailPokemonStyle = styled(motion.div)`
   }
   &.gray {
     background: var(--g-black), white;
-  }
-
-  @media screen and (min-width: 375px) {
-    border-radius: 1.25em;
-    max-width: 414px;
-    max-height: 812px;
-    min-height: 812px;
   }
 `;
 
@@ -159,6 +178,14 @@ const DPContent = styled.div`
       max-height: 33px;
     }
   }
+`;
+
+const LoadingController = styled.div`
+  padding: 1.25em;
+  margin-top: 1.25em;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 `;
 
 export default DetailPokemonPage;

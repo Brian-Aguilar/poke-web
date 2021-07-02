@@ -3,27 +3,25 @@ import CardItem from "../Card/items";
 import CardPokemon from "../Card/pokemon";
 import LoadPokeball from "../svg/load";
 
-const ListNormal = ({ data, type }) => {
+const ListNormal = ({ data, type, isLoading }) => {
   return (
     <ListNormalStyle>
-      {data.isLoading && (
+      {isLoading && (
         <LodingContainer>
           <LoadPokeball />
         </LodingContainer>
       )}
-      {data.datos.length !== 0 ? (
+      {data.length !== 0 ? (
         <>
           {type === "search" &&
-            data.datos.map((dato) => (
-              <CardItem key={`sp-${dato.id}`} dato={dato} />
-            ))}
+            data.map((dato) => <CardItem key={`sp-${dato.id}`} dato={dato} />)}
           {type === "pokemon" &&
-            data.datos.map((dato) => (
+            data.map((dato) => (
               <CardPokemon key={`cp-${dato.id}`} dato={dato} />
             ))}
         </>
       ) : (
-        data.isLoading === false && <h2>No hay Items</h2>
+        <h2>No hay Items</h2>
       )}
     </ListNormalStyle>
   );
