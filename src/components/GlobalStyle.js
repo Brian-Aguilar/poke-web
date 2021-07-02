@@ -73,15 +73,16 @@ const GlobalStyle = createGlobalStyle`
     max-width: 414px;
     width: 100%;
     height: 100%;
+    padding: 1.25em;
     display: block;
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
     z-index: 1;
 
-    > img {
+    > span {
       position: absolute;
-      top: -3.8em;
+      top: -3.6em;
       right: -3.8em;
       opacity: .4;
       transform: scale(1.5);
@@ -129,7 +130,7 @@ export const Column = styled.div`
 `;
 
 export const BasePageStyle = styled.div`
-  padding: 1.25em;
+  /* padding: 1.25em; */
   position: relative;
   z-index: 1;
 
