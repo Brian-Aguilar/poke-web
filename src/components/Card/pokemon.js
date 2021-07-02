@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import PokeballFondo from "../../images/pokeball_fondo.svg";
+import PokeballFondo from "../svg/pokeball_gris";
 import Badge from "../Badge";
 import LoadImage from "../image/load";
 
@@ -34,7 +34,9 @@ const CardPokemon = ({ dato }) => {
           >
             <LoadImage srcURL={dato.image} />
           </motion.div>
-          <img className="pokeball-fondo" src={PokeballFondo} alt="pokemon-" />
+          <span className="pokeball-fondo">
+            <PokeballFondo />
+          </span>
         </div>
       </CardPokemonStyle>
     </Link>

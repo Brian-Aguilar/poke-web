@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import pokeballFondo from "../../images/pokeball_fondo.svg";
+import PokeballFondo from "../svg/pokeball_gris";
 
 const CardSimple = ({ titulo }) => {
   return (
     <CardSimpleStyle className={`shadow ${titulo}`}>
       <h2>{titulo}</h2>
-      <img src={pokeballFondo} alt="imagen" />
+      <span>
+        <PokeballFondo />
+      </span>
     </CardSimpleStyle>
   );
 };
@@ -50,7 +52,7 @@ const CardSimpleStyle = styled.div`
     user-select: none;
   }
 
-  img {
+  span {
     position: absolute;
     bottom: -5em;
     right: -5em;
