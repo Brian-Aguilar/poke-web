@@ -214,6 +214,7 @@ const animatePokeball = {
 };
 
 const PokeballSVG = styled(motion.svg)`
+  display: block;
   max-width: 150px;
   width: 100%;
   margin: 0 auto;

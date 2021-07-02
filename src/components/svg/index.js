@@ -5,6 +5,7 @@ import InfoIcon from "./info";
 import StatsIcon from "./stats";
 import EvolutionIcon from "./evolution";
 import LanguageIcon from "./language";
+import CloseIcon from "./close";
 
 const Icono = (props) => {
   switch (props.icono) {
@@ -22,6 +23,8 @@ const Icono = (props) => {
       return <EvolutionIcon {...props} />;
     case "language":
       return <LanguageIcon {...props} />;
+    case "close":
+      return <CloseIcon {...props} />;
 
     default:
       return <span>No icono</span>;
